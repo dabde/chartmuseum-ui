@@ -13,15 +13,14 @@ type ChartController struct {
 // Get render all versions of one specific chart
 func (c *ChartController) Get() {
 
-	l := logs.GetLogger()
-	l.Println("into chart page")
+	logs.Info("into chart page")
 
 	var name string
 	c.Ctx.Input.Bind(&name, "name")
 
 	c.Data["chart"] = getCharts()[name]
 
-	l.Println(getCharts()[name])
+	logs.Debug(getCharts()[name])
 
 	c.TplName = "chart.tpl"
 }

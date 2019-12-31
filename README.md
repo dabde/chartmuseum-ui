@@ -1,14 +1,11 @@
-# ChartMuseumUI
-[![HitCount](http://hits.dwyl.io/idobry/chartmuseumui.svg)](http://hits.dwyl.io/idobry/chartmuseumui) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues) [![Go Report Card](https://goreportcard.com/badge/github.com/chartmuseum/ui)](https://goreportcard.com/report/github.com/chartmuseum/ui)
-
-<img src="./logo.png" width="300">
+<img src="./doc/logo.png" width="300">
 
 # ChartMuseumUI
 
 ChartMuseumUI is a simple web app that (currently) provides GUI for your charts so you and your team can view and share the technologies your are using to any one at any time (in near future more capabilities will be added).
 ChartMuseumUI was written in Go (Golang) with the help of Beego Framework.
 
-<img src="./combine-gif.gif" width="2000">
+<img src="./doc/combine-gif.gif" width="2000">
 
 ## Getting Started
 
@@ -35,8 +32,6 @@ version: '2.0'
 services:
    ui:
      image: idobry/chartmuseumui:latest
-     environment:
-      CHART_MUSESUM_URL: "http://chartmuseum:8080"
      ports:
       - 80:8080
    chartmuseum:
@@ -58,7 +53,7 @@ services:
 Copy this file and run
 
 ```
-docker-compose up 
+docker-compose up
 ```
 Easy, right? now, we can add our private repository to our Helm client:
 ```
@@ -82,27 +77,25 @@ $ helm package .
 # copy packge name and run
 $ curl -L --data-binary "@<packge-name>" <chartmuseum-url>/api/charts
 ```
-   
+
 In the browser, navigate to localhost and view your charts
 
-### Using with ChartMuseum with Multitenancy enabled
+## config
 
-To use ChartMuseumUI on a ChartMuseum with Multitenancy support enabled, add the following environment variable to ChartMuseumUI
-
+#### **`/conf/config.yaml`**
+```yaml
+chartmuseum:
+  host: http://ChartMuseum:8080 # you cahrtmuseum host
+  hostapi: # set if you are running in a Multitenancy environment
+  username: # username for your backend
+  password: # password for your backend
+ui:
+  username: # username for frontend, not yet implemented
+  password: # password for the frontend, not yet implemented
 ```
-CHART_MUSESUM_API_GET_CHARTS: "/api/org1/charts"
-```
 
-Currently only one organization is allowed per ChartMuseumUI.
-
-
-### Adding authentication to ChartMuseumUI 
-
-To add a simple basic auth to ChartMuseumUI, you can add the following configuration
-
-```
-BASIC_AUTH_USERS: '[{"username":"admin", "password":"password"}, {"username":"user", "password":"s3cr3t"}]'
-```
+#### **`/conf/app.conf`**
+beego config file for the project
 
 ## Built With
 
@@ -110,27 +103,17 @@ BASIC_AUTH_USERS: '[{"username":"admin", "password":"password"}, {"username":"us
 * [go](https://golang.org/) - Programing language
 * [docker](https://www.docker.com/) - Packaged with docker
 
-
-## Project Roadmap
-* Add login screen
-* Add more chartmuseum capabilitis:
-   - Upload a chart
-     - Support multiple
-   - Delete a chart
-     - Ask before deleting
-     - Delete all versions button
-     - Back to 'home' after delete all
-
 ## Contributing
 
 Code contributions are very welcome. If you are interested in helping make chartmuseumui great then feel free!
 
+## todo
+* frontend login
+* unit tests
 
 ## Authors
 
 * **Ido Braunstain** - *Initial work*
+* **Denis Dabischa** - *add backend auth via config file, move to go modules*
 
 See also the list of [contributors](https://github.com/idobry/contributors) who participated in this project.
-
-
-

@@ -1,0 +1,13 @@
+chartmuseum:
+  host: http://chartmuseum:8080
+
+  ## Multitenancy api endpoint
+  # hostapi: 
+
+  ## backend login
+  # username: username
+  # password: password
+ui:
+  # web login
+  # username: username
+  # password: password

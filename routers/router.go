@@ -3,8 +3,8 @@ package routers
 import (
 	"os"
 
-	"github.com/chartmuseum/ui/controllers"
-	"github.com/chartmuseum/ui/services"
+	"chartmuseum-ui/controllers"
+	"chartmuseum-ui/services"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"

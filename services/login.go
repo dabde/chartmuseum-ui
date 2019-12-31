@@ -4,7 +4,7 @@ import (
 	"errors"
 	"os"
 
-	"github.com/chartmuseum/ui/models"
+	"chartmuseum-ui/models"
 
 	"github.com/astaxie/beego/logs"
 )

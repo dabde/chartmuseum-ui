@@ -12,8 +12,7 @@ type MainController struct {
 
 // Get renders a list with all charts in ChartMuseum
 func (c *MainController) Get() {
-	l := logs.GetLogger()
-	l.Println("I'm alive")
+	logs.Info("I'm alive")
 	c.Data["charts"] = getCharts()
 	c.TplName = "main.tpl"
 }

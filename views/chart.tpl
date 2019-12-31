@@ -9,9 +9,9 @@
       <a href="/">{{ template "header.tpl" . }}</a>
   </section>
 
-  <section>  
+  <section class="chart-scroller">  
     <div id="w">
-      <div id="content" class="clearfix">
+      <div id="content">
         {{ if (index .chart 0).Icon }}
           <div id="userphoto"><img src={{ (index .chart 0).Icon }} alt="default avatar"></div>
         {{else}}
